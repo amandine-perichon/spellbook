@@ -1,0 +1,3 @@
+rootProject.name = 'Spellbook'
+
+include ':app'
