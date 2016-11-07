@@ -4,3 +4,10 @@ export function addCharacter (name) {
     name: name
   }
 }
+
+export function deleteCharacter (name) {
+  return {
+    type: 'DELETE_CHARACTER',
+    name: name
+  }
+}

@@ -18,6 +18,10 @@ export default React.createClass({
       name: ""
     }
   },
+  addCharacter () {
+    this.props.onAddCharacter(this.state.name)
+    this.setState({name: ""})
+  },
   render() {
     return (
       <View style={styles.container}>
@@ -32,10 +36,12 @@ export default React.createClass({
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(name) => this.setState({name})}
+          autoCorrect={false}
           value={this.state.name}/>
         <TouchableHighlight
+            underlayColor='red'
             style={styles.add}
-            onPress={() => this.state.name !== ""? this.props.onAddCharacter(this.state.name): null} >
+            onPress={() => this.state.name !== ""? this.addCharacter(): null} >
           <View>
             <Text>
               Add a character

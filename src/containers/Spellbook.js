@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {createStore, applyMiddleware, compose } from 'redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import { Provider } from 'react-redux'
