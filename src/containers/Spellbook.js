@@ -3,7 +3,7 @@ import {createStore, applyMiddleware, compose } from 'redux'
 import {Provider} from 'react-redux'
 
 import HomeContainer from '../containers/HomeContainer'
-import reducers from '../store/reducers'
+import reducers from '../reducers'
 
 let store = createStore(reducers, compose(
     global.reduxNativeDevTools ?

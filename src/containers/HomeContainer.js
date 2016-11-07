@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { addCharacter } from '../store/actions'
+import { addCharacter } from '../actions'
 import Home from '../components/Home'
 
 const mapDispatchToProps = (dispatch) => {

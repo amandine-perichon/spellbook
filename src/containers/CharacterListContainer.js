@@ -4,7 +4,7 @@ import CharacterList from '../components/CharacterList'
 
 const mapStateToProps = (state) => {
   return {
-    characters: state
+    characters: state.characters
   }
 }
 
