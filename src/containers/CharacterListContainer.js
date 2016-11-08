@@ -5,7 +5,7 @@ import { deleteCharacter } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
-    characters: state.characters
+    characters: state.characters,
   }
 }
 

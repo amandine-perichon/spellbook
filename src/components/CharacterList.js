@@ -3,6 +3,7 @@ import {
   View,
   ScrollView,
   Text,
+  TouchableHighlight
 } from 'react-native'
 import Swipeout from 'react-native-swipeout'
 
@@ -11,6 +12,7 @@ import styles from '../styles.js'
 export default React.createClass({
   props: {
     characters: React.PropTypes.array.isRequired,
+    onCharacterPress: React.PropTypes.func.isRequired,
     onCharacterDelete: React.PropTypes.func.isRequired
   },
   render () {
@@ -26,9 +28,11 @@ export default React.createClass({
           right={swipeBtns}
           autoClose={true}
           backgroundColor= 'transparent'>
-          <View style={styles.character}>
-            <Text>{character.name}</Text>
-          </View>
+          <TouchableHighlight onPress={() => this.props.onCharacterPress(character.name)}>
+            <View style={styles.character}>
+              <Text>{character.name}</Text>
+            </View>
+          </TouchableHighlight>
         </Swipeout>
       )
     })
