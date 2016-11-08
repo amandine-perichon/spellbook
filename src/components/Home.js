@@ -11,7 +11,8 @@ import styles from '../styles'
 
 export default React.createClass({
   props: {
-    onAddCharacter: React.PropTypes.func.isRequired
+    onAddCharacter: React.PropTypes.func.isRequired,
+    onCharacterPress: React.PropTypes.func.isRequired
   },
   getInitialState () {
     return {
@@ -31,7 +32,7 @@ export default React.createClass({
           </Text>
         </View>
         <View style={styles.charactersContainer}>
-          <CharacterListContainer />
+          <CharacterListContainer onCharacterPress={this.props.onCharacterPress}/>
         </View>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}

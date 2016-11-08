@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import CharacterList from '../components/CharacterList'
 import { deleteCharacter } from '../actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     characters: state.characters,
+    onCharacterPress: ownProps.onCharacterPress
   }
 }
 

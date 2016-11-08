@@ -10,7 +10,7 @@ import styles from '../styles.js'
 
 export default React.createClass({
   props: {
-    name: React.PropTypes.string.isRequired,
+    characterName: React.PropTypes.string.isRequired,
     onBack: React.PropTypes.func.isRequired
   },
   render () {
@@ -18,7 +18,7 @@ export default React.createClass({
         <View style={styles.container}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>
-              {this.props.name}'s Spellbook
+              {this.props.characterName}'s Spellbook
             </Text>
             <TouchableHighlight onPress={this.props.onBack}>
               <Text>Back</Text>

@@ -23,7 +23,8 @@ export default React.createClass({
     switch(route.name) {
       case 'home':
         return <HomeContainer
-                onCharacterPress={(characterName) => {
+                onCharacterPress={
+                  (characterName) => {
                   navigator.push({
                       name: 'character',
                       characterName: characterName}

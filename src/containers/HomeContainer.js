@@ -3,6 +3,12 @@ import { connect } from 'react-redux'
 import { addCharacter } from '../actions'
 import Home from '../components/Home'
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    onCharacterPress: ownProps.onCharacterPress
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddCharacter: (name) => {
@@ -11,4 +17,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null , mapDispatchToProps)(Home)
+export default connect(mapStateToProps , mapDispatchToProps)(Home)
