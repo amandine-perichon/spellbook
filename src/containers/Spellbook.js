@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { Navigator, AsyncStorage } from 'react-native'
 
 import HomeContainer from '../containers/HomeContainer'
-import Spells from '../components/Spells'
+import SpellsContainer from '../containers/SpellsContainer'
 import reducers from '../reducers'
 
 const enhancers = compose(
@@ -24,20 +24,20 @@ export default React.createClass({
       case 'home':
         return <HomeContainer
                 onCharacterPress={
-                  (characterName) => {
+                  (character) => {
                   navigator.push({
                       name: 'character',
-                      characterName: characterName}
+                      character: character}
                     )}} />
       case 'character':
-        return <Spells
-                characterName={route.characterName}
+        return <SpellsContainer
+                character={route.character}
                 onBack={() => navigator.pop()} />
       default:
-        return <HomeContainer onCharacterPress={(characterName) => {
+        return <HomeContainer onCharacterPress={(character) => {
           navigator.push({
               name: 'character',
-              characterName: characterName}
+              character: character}
             )}} />
     }
   },

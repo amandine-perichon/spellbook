@@ -11,26 +11,24 @@ import styles from '../styles.js'
 
 export default React.createClass({
   props: {
-    characters: React.PropTypes.array.isRequired,
-    onCharacterPress: React.PropTypes.func.isRequired,
-    onCharacterDelete: React.PropTypes.func.isRequired
+    spells: React.PropTypes.array.isRequired
   },
   render () {
-    const list = this.props.characters.map((character, i) => {
+    const list = this.props.spells.map((spell, i) => {
       let swipeBtns = [{
         text: 'Delete',
         backgroundColor: 'red',
         underlayColor: 'blue',
-        onPress: () => { this.props.onCharacterDelete(character.name) }
+        onPress: () => {() => console.log('Delete Spell') }
       }]
       return (
         <Swipeout
           right={swipeBtns}
           autoClose={true}
           backgroundColor= 'transparent'>
-          <TouchableHighlight onPress={() => this.props.onCharacterPress(character)}>
-            <View style={styles.character}>
-              <Text>{character.name}</Text>
+          <TouchableHighlight onPress={() => console.log('detailed Spell View')}>
+            <View>
+              <Text>{spell}</Text>
             </View>
           </TouchableHighlight>
         </Swipeout>

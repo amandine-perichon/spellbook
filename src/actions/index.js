@@ -11,3 +11,11 @@ export function deleteCharacter (name) {
     name: name
   }
 }
+
+export function addSpell (characterName, spellName) {
+  return {
+    type: 'ADD_SPELL',
+    character: characterName,
+    name: spellName
+  }
+}
