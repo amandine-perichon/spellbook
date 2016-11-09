@@ -7,7 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "apollo-client": "^0.5.1",
     "react": "15.3.2",
+    "react-apollo": "^0.5.16",
     "react-native": "0.36.1",
     "react-native-swipeout": "https://github.com/dancormier/react-native-swipeout.git",
     "react-redux": "^4.4.5",

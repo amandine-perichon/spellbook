@@ -1,14 +1,30 @@
 import React, { Component } from 'react'
-import {createStore, applyMiddleware, compose } from 'redux'
+import {createStore, applyMiddleware, compose , combineReducers} from 'redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import { Provider } from 'react-redux'
 import { Navigator, AsyncStorage } from 'react-native'
+import ApolloClient, { createNetworkInterface } from 'apollo-client'
+import { ApolloProvider } from 'react-apollo'
 
 import HomeContainer from '../containers/HomeContainer'
 import SpellsContainer from '../containers/SpellsContainer'
-import reducers from '../reducers'
+// import reducers from '../reducers'
+import characters from '../reducers/characters'
+
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({ uri: 'http://5espellbook.com/graphql' }),
+})
+
+const apollo = client.reducer()
+
+// Should be in reducers/index
+const reducers = combineReducers({
+  characters,
+  apollo
+})
 
 const enhancers = compose(
+  applyMiddleware(client.middleware()),
   autoRehydrate(),
   global.reduxNativeDevTools ?
         global.reduxNativeDevTools() :
@@ -16,7 +32,7 @@ const enhancers = compose(
 )
 
 const store = createStore(reducers, undefined, enhancers)
-const persistor = persistStore(store, {storage: AsyncStorage})
+const persistor = persistStore(store, {blacklist: [apollo],storage: AsyncStorage})
 
 export default React.createClass({
   navigatorRenderScene (route, navigator) {
@@ -43,12 +59,12 @@ export default React.createClass({
   },
   render() {
     return (
-      <Provider store={store} persistor={persistor}>
-        <Navigator
-          initialRoute={{ name: 'home' }}
-          renderScene={this.navigatorRenderScene}
-        />
-      </Provider>
+      <ApolloProvider store={store} client={client} persistor={persistor}>
+          <Navigator
+            initialRoute={{ name: 'home' }}
+            renderScene={this.navigatorRenderScene}
+          />
+      </ApolloProvider>
     )
   }
 })
