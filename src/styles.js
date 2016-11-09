@@ -14,7 +14,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontSize: 20
   },
-  charactersContainer: {
+  listContainer: {
     flex: 0.8,
     backgroundColor: '#c97cc9',
   },

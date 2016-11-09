@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native'
 
-import SpellList from './SpellList'
+import SpellListContainer from '../containers/SpellListContainer'
 
 import styles from '../styles.js'
 
@@ -37,8 +37,8 @@ export default React.createClass({
               <Text>Back</Text>
             </TouchableHighlight>
           </View>
-          <View>
-            <SpellList spells={this.props.character.spells} />
+          <View style={styles.listContainer}>
+            <SpellListContainer character={this.props.character} />
           </View>
           <TextInput
             style={{height: 40, borderColor: 'gray', borderWidth: 1}}

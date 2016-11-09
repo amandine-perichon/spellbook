@@ -31,7 +31,7 @@ export default React.createClass({
             Spellbook
           </Text>
         </View>
-        <View style={styles.charactersContainer}>
+        <View style={styles.listContainer}>
           <CharacterListContainer onCharacterPress={this.props.onCharacterPress}/>
         </View>
         <TextInput

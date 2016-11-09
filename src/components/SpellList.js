@@ -11,15 +11,20 @@ import styles from '../styles.js'
 
 export default React.createClass({
   props: {
-    spells: React.PropTypes.array.isRequired
+    character: React.PropTypes.array.isRequired,
+    onDeleteSpell: React.PropTypes.func.isRequired
   },
   render () {
-    const list = this.props.spells.map((spell, i) => {
+    console.log(this.props.character)
+    const list = this.props.character.spells.map((spell, i) => {
       let swipeBtns = [{
         text: 'Delete',
         backgroundColor: 'red',
         underlayColor: 'blue',
-        onPress: () => {() => console.log('Delete Spell') }
+        onPress: () => {
+          console.log(spell)
+          this.props.onDeleteSpell(this.props.character.name, spell)
+        }
       }]
       return (
         <Swipeout

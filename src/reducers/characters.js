@@ -12,6 +12,18 @@ export default (state = [], action) => {
           return character
         }
       })
+    case 'DELETE_SPELL':
+    // TO FIX
+      return state.map((character) => {
+        if (character.name === action.character) {
+          const spells = character.spells.slice()
+          const index = spells.indexOf(action.name)
+          spells.splice(index)
+          return Object.assign(character, {spells: spells})
+        } else {
+          return character
+        }
+      })
     default:
       return state
   }
