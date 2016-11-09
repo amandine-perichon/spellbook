@@ -8,6 +8,8 @@ import { ApolloProvider } from 'react-apollo'
 
 import HomeContainer from '../containers/HomeContainer'
 import SpellsContainer from '../containers/SpellsContainer'
+import Spell from '../components/Spell'
+
 // import reducers from '../reducers'
 import characters from '../reducers/characters'
 
@@ -17,7 +19,8 @@ const client = new ApolloClient({
 
 const apollo = client.reducer()
 
-// Should be in reducers/index
+// FIXME Should be in reducers/index
+
 const reducers = combineReducers({
   characters,
   apollo
@@ -48,7 +51,16 @@ export default React.createClass({
       case 'character':
         return <SpellsContainer
                 character={route.character}
+                onSpellPress={
+                  (spellName) => {
+                  navigator.push({
+                      name: 'spell',
+                      spellName: spellName}
+                    )}}
                 onBack={() => navigator.pop()} />
+      case 'spell':
+        return <Spell
+                  onBack={() => navigator.pop()} />
       default:
         return <HomeContainer onCharacterPress={(character) => {
           navigator.push({

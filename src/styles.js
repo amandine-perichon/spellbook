@@ -18,7 +18,7 @@ export default StyleSheet.create({
     flex: 0.8,
     backgroundColor: '#c97cc9',
   },
-  character: {
+  item: {
     padding: 10,
     borderWidth: 0.5,
   },

@@ -29,7 +29,7 @@ export default React.createClass({
           autoClose={true}
           backgroundColor= 'transparent'>
           <TouchableHighlight onPress={() => this.props.onCharacterPress(character)}>
-            <View style={styles.character}>
+            <View style={styles.item}>
               <Text>{character.name}</Text>
             </View>
           </TouchableHighlight>

@@ -12,6 +12,7 @@ import styles from '../styles.js'
 export default React.createClass({
   props: {
     character: React.PropTypes.array.isRequired,
+    onSpellPress: React.PropTypes.func.isRequired,
     onDeleteSpell: React.PropTypes.func.isRequired
   },
   render () {
@@ -31,8 +32,8 @@ export default React.createClass({
           right={swipeBtns}
           autoClose={true}
           backgroundColor= 'transparent'>
-          <TouchableHighlight onPress={() => console.log('detailed Spell View')}>
-            <View>
+          <TouchableHighlight onPress={() => this.props.onSpellPress(spell)}>
+            <View style={styles.item}>
               <Text>{spell}</Text>
             </View>
           </TouchableHighlight>

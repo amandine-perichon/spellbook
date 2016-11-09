@@ -15,6 +15,7 @@ export default React.createClass({
   props: {
     character: React.PropTypes.object.isRequired,
     onAddSpell: React.PropTypes.func.isRequired,
+    onSpellPress: React.PropTypes.func.isRequired,
     onBack: React.PropTypes.func.isRequired
   },
   getInitialState () {
@@ -38,7 +39,7 @@ export default React.createClass({
             </TouchableHighlight>
           </View>
           <View style={styles.listContainer}>
-            <SpellListContainer character={this.props.character} />
+            <SpellListContainer character={this.props.character} onSpellPress={this.props.onSpellPress}/>
           </View>
           <TextInput
             style={{height: 40, borderColor: 'gray', borderWidth: 1}}
